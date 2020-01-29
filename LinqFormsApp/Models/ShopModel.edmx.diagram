@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7c0ed86dc00744eeba34be56a533c197" Name="Diagram1">
+        <EntityTypeShape EntityType="shopModel.agentbalance" Width="1.5" PointX="10.5" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.agent" Width="1.5" PointX="6" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.balance" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.cashbook" Width="1.5" PointX="5.25" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.category" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.company" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.config" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.customer" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.ledger" Width="1.5" PointX="7.5" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.product" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.registration" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.return" Width="1.5" PointX="9.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.sale" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.salesa" Width="1.5" PointX="8.25" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.salesc" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.sold" Width="1.5" PointX="7.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.solda" Width="1.5" PointX="10.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.soldc" Width="1.5" PointX="7.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.stock" Width="1.5" PointX="7.5" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.sysdiagram" Width="1.5" PointX="7.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="shopModel.user" Width="1.5" PointX="9.75" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="shopModel.FK_agentbalances_agents" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK_agentbalances_salesa" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK_salesa_agents" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK_balances_customers" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK_balances_salesc" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK_cashbook_customers" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK_ledger_cashbook" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK__product__categor__014935CB" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK__product__company__023D5A04" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK__config__product___0519C6AF" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK__sold__config_id__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK__solda__config_id__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK__soldc__config_id__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK__stock__config_id__07F6335A" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK_salesc_customers" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK_returns_returns" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK__sold__invoice_no__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK__solda__invoice_no__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="shopModel.FK__soldc__invoice_no__15502E78" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="shopModel.Cust" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,612 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="shopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="agentbalance">
+    <Key>
+      <PropertyRef Name="transaction_no" />
+    </Key>
+    <Property Name="transaction_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="invoice_no" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="invoice_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="balance" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="agent" Relationship="Self.FK_agentbalances_agents" FromRole="agentbalances" ToRole="agents" />
+    <NavigationProperty Name="salesa" Relationship="Self.FK_agentbalances_salesa" FromRole="agentbalances" ToRole="salesa" />
+  </EntityType>
+  <EntityType Name="agent">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="agent_name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="agent_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="agentbalances" Relationship="Self.FK_agentbalances_agents" FromRole="agents" ToRole="agentbalances" />
+    <NavigationProperty Name="salesas" Relationship="Self.FK_salesa_agents" FromRole="agents" ToRole="salesa" />
+  </EntityType>
+  <EntityType Name="balance">
+    <Key>
+      <PropertyRef Name="transaction_no" />
+    </Key>
+    <Property Name="transaction_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="invoice_no" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="invoice_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="balance1" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="customer" Relationship="Self.FK_balances_customers" FromRole="balances" ToRole="customers" />
+    <NavigationProperty Name="salesc" Relationship="Self.FK_balances_salesc" FromRole="balances" ToRole="salesc" />
+  </EntityType>
+  <EntityType Name="cashbook">
+    <Key>
+      <PropertyRef Name="receiptno" />
+    </Key>
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="customerid" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="receiptno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="customer" Relationship="Self.FK_cashbook_customers" FromRole="cashbook" ToRole="customers" />
+    <NavigationProperty Name="ledgers" Relationship="Self.FK_ledger_cashbook" FromRole="cashbook" ToRole="ledger" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="category_name" />
+    </Key>
+    <Property Name="category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="products" Relationship="Self.FK__product__categor__014935CB" FromRole="category" ToRole="product" />
+  </EntityType>
+  <EntityType Name="company">
+    <Key>
+      <PropertyRef Name="company_name" />
+    </Key>
+    <Property Name="company_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="products" Relationship="Self.FK__product__company__023D5A04" FromRole="company" ToRole="product" />
+  </EntityType>
+  <EntityType Name="config">
+    <Key>
+      <PropertyRef Name="config_id" />
+    </Key>
+    <Property Name="config_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="features" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="sale_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="agentprice" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="product" Relationship="Self.FK__config__product___0519C6AF" FromRole="config" ToRole="product" />
+    <NavigationProperty Name="solds" Relationship="Self.FK__sold__config_id__164452B1" FromRole="config" ToRole="sold" />
+    <NavigationProperty Name="soldas" Relationship="Self.FK__solda__config_id__164452B1" FromRole="config" ToRole="solda" />
+    <NavigationProperty Name="soldcs" Relationship="Self.FK__soldc__config_id__164452B1" FromRole="config" ToRole="soldc" />
+    <NavigationProperty Name="stocks" Relationship="Self.FK__stock__config_id__07F6335A" FromRole="config" ToRole="stock" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customer_name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="customer_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="balances" Relationship="Self.FK_balances_customers" FromRole="customers" ToRole="balances" />
+    <NavigationProperty Name="cashbooks" Relationship="Self.FK_cashbook_customers" FromRole="customers" ToRole="cashbook" />
+    <NavigationProperty Name="salescs" Relationship="Self.FK_salesc_customers" FromRole="customers" ToRole="salesc" />
+  </EntityType>
+  <EntityType Name="ledger">
+    <Key>
+      <PropertyRef Name="transactionid" />
+    </Key>
+    <Property Name="cashdate" Type="DateTime" Precision="3" />
+    <Property Name="invoicedate" Type="DateTime" Precision="3" />
+    <Property Name="customer_id" Type="Int32" />
+    <Property Name="company" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="receiptno" Type="Int32" />
+    <Property Name="amountpaid" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="invoice_no" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="grossamount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="discountamount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="netamount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="discountpercent" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="debitcredit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="transactionid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="cashbook" Relationship="Self.FK_ledger_cashbook" FromRole="ledger" ToRole="cashbook" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="product_name" />
+    </Key>
+    <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="company_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="category" Relationship="Self.FK__product__categor__014935CB" FromRole="product" ToRole="category" />
+    <NavigationProperty Name="company" Relationship="Self.FK__product__company__023D5A04" FromRole="product" ToRole="company" />
+    <NavigationProperty Name="configs" Relationship="Self.FK__config__product___0519C6AF" FromRole="product" ToRole="config" />
+  </EntityType>
+  <EntityType Name="registration">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="C_name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="contactno" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="joiningdate" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="C_role" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="return">
+    <Key>
+      <PropertyRef Name="returnid" />
+    </Key>
+    <Property Name="returnid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="config_id" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="returns1" Relationship="Self.FK_returns_returns" FromRole="returns" ToRole="returns1" />
+    <NavigationProperty Name="return1" Relationship="Self.FK_returns_returns" FromRole="returns1" ToRole="returns" />
+  </EntityType>
+  <EntityType Name="sale">
+    <Key>
+      <PropertyRef Name="invoice_no" />
+    </Key>
+    <Property Name="invoice_no" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="invoice_date" Type="DateTime" Precision="3" />
+    <Property Name="customer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="discount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="received" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="soleby" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="solds" Relationship="Self.FK__sold__invoice_no__15502E78" FromRole="sales" ToRole="sold" />
+  </EntityType>
+  <EntityType Name="salesa">
+    <Key>
+      <PropertyRef Name="invoice_no" />
+    </Key>
+    <Property Name="invoice_no" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="agent_id" Type="Int32" />
+    <Property Name="agent_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="discount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="netamount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="received" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="balance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="debitcredit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="saleby" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="agentbalances" Relationship="Self.FK_agentbalances_salesa" FromRole="salesa" ToRole="agentbalances" />
+    <NavigationProperty Name="agent" Relationship="Self.FK_salesa_agents" FromRole="salesa" ToRole="agents" />
+    <NavigationProperty Name="soldas" Relationship="Self.FK__solda__invoice_no__15502E78" FromRole="salesa" ToRole="solda" />
+  </EntityType>
+  <EntityType Name="salesc">
+    <Key>
+      <PropertyRef Name="invoice_no" />
+    </Key>
+    <Property Name="invoice_no" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="customer_id" Type="Int32" />
+    <Property Name="customer_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="discount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="netamount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="received" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="balance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="debitcredit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="saleby" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="balances" Relationship="Self.FK_balances_salesc" FromRole="salesc" ToRole="balances" />
+    <NavigationProperty Name="customer" Relationship="Self.FK_salesc_customers" FromRole="salesc" ToRole="customers" />
+    <NavigationProperty Name="soldcs" Relationship="Self.FK__soldc__invoice_no__15502E78" FromRole="salesc" ToRole="soldc" />
+  </EntityType>
+  <EntityType Name="sold">
+    <Key>
+      <PropertyRef Name="sold_id" />
+    </Key>
+    <Property Name="sold_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="invoice_no" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="config_id" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="soldby" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="config" Relationship="Self.FK__sold__config_id__164452B1" FromRole="sold" ToRole="config" />
+    <NavigationProperty Name="sale" Relationship="Self.FK__sold__invoice_no__15502E78" FromRole="sold" ToRole="sales" />
+  </EntityType>
+  <EntityType Name="solda">
+    <Key>
+      <PropertyRef Name="sold_id" />
+    </Key>
+    <Property Name="sold_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="invoice_no" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="config_id" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="soldby" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="config" Relationship="Self.FK__solda__config_id__164452B1" FromRole="solda" ToRole="config" />
+    <NavigationProperty Name="salesa" Relationship="Self.FK__solda__invoice_no__15502E78" FromRole="solda" ToRole="salesa" />
+  </EntityType>
+  <EntityType Name="soldc">
+    <Key>
+      <PropertyRef Name="sold_id" />
+    </Key>
+    <Property Name="sold_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="invoice_no" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="config_id" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="soldby" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="config" Relationship="Self.FK__soldc__config_id__164452B1" FromRole="soldc" ToRole="config" />
+    <NavigationProperty Name="salesc" Relationship="Self.FK__soldc__invoice_no__15502E78" FromRole="soldc" ToRole="salesc" />
+  </EntityType>
+  <EntityType Name="stock">
+    <Key>
+      <PropertyRef Name="stock_id" />
+    </Key>
+    <Property Name="stock_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="config_id" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="total_price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="stock_date" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="config" Relationship="Self.FK__stock__config_id__07F6335A" FromRole="stock" ToRole="config" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="display_name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="role" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_agentbalances_agents">
+    <End Role="agents" Type="Self.agent" Multiplicity="1" />
+    <End Role="agentbalances" Type="Self.agentbalance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="agents">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="agentbalances">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_agentbalances_salesa">
+    <End Role="salesa" Type="Self.salesa" Multiplicity="1" />
+    <End Role="agentbalances" Type="Self.agentbalance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="salesa">
+        <PropertyRef Name="invoice_no" />
+      </Principal>
+      <Dependent Role="agentbalances">
+        <PropertyRef Name="invoice_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_salesa_agents">
+    <End Role="agents" Type="Self.agent" Multiplicity="0..1" />
+    <End Role="salesa" Type="Self.salesa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="agents">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="salesa">
+        <PropertyRef Name="agent_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_balances_customers">
+    <End Role="customers" Type="Self.customer" Multiplicity="1" />
+    <End Role="balances" Type="Self.balance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="balances">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_balances_salesc">
+    <End Role="salesc" Type="Self.salesc" Multiplicity="1" />
+    <End Role="balances" Type="Self.balance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="salesc">
+        <PropertyRef Name="invoice_no" />
+      </Principal>
+      <Dependent Role="balances">
+        <PropertyRef Name="invoice_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cashbook_customers">
+    <End Role="customers" Type="Self.customer" Multiplicity="1" />
+    <End Role="cashbook" Type="Self.cashbook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cashbook">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ledger_cashbook">
+    <End Role="cashbook" Type="Self.cashbook" Multiplicity="0..1" />
+    <End Role="ledger" Type="Self.ledger" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cashbook">
+        <PropertyRef Name="receiptno" />
+      </Principal>
+      <Dependent Role="ledger">
+        <PropertyRef Name="receiptno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product__categor__014935CB">
+    <End Role="category" Type="Self.category" Multiplicity="1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="category_name" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="category_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product__company__023D5A04">
+    <End Role="company" Type="Self.company" Multiplicity="1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="company">
+        <PropertyRef Name="company_name" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="company_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__config__product___0519C6AF">
+    <End Role="product" Type="Self.product" Multiplicity="1" />
+    <End Role="config" Type="Self.config" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="product_name" />
+      </Principal>
+      <Dependent Role="config">
+        <PropertyRef Name="product_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sold__config_id__164452B1">
+    <End Role="config" Type="Self.config" Multiplicity="1" />
+    <End Role="sold" Type="Self.sold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="config">
+        <PropertyRef Name="config_id" />
+      </Principal>
+      <Dependent Role="sold">
+        <PropertyRef Name="config_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__solda__config_id__164452B1">
+    <End Role="config" Type="Self.config" Multiplicity="1" />
+    <End Role="solda" Type="Self.solda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="config">
+        <PropertyRef Name="config_id" />
+      </Principal>
+      <Dependent Role="solda">
+        <PropertyRef Name="config_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__soldc__config_id__164452B1">
+    <End Role="config" Type="Self.config" Multiplicity="1" />
+    <End Role="soldc" Type="Self.soldc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="config">
+        <PropertyRef Name="config_id" />
+      </Principal>
+      <Dependent Role="soldc">
+        <PropertyRef Name="config_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__stock__config_id__07F6335A">
+    <End Role="config" Type="Self.config" Multiplicity="1" />
+    <End Role="stock" Type="Self.stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="config">
+        <PropertyRef Name="config_id" />
+      </Principal>
+      <Dependent Role="stock">
+        <PropertyRef Name="config_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_salesc_customers">
+    <End Role="customers" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="salesc" Type="Self.salesc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="salesc">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_returns_returns">
+    <End Role="returns" Type="Self.return" Multiplicity="1" />
+    <End Role="returns1" Type="Self.return" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="returns">
+        <PropertyRef Name="returnid" />
+      </Principal>
+      <Dependent Role="returns1">
+        <PropertyRef Name="returnid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sold__invoice_no__15502E78">
+    <End Role="sales" Type="Self.sale" Multiplicity="1" />
+    <End Role="sold" Type="Self.sold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sales">
+        <PropertyRef Name="invoice_no" />
+      </Principal>
+      <Dependent Role="sold">
+        <PropertyRef Name="invoice_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__solda__invoice_no__15502E78">
+    <End Role="salesa" Type="Self.salesa" Multiplicity="1" />
+    <End Role="solda" Type="Self.solda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="salesa">
+        <PropertyRef Name="invoice_no" />
+      </Principal>
+      <Dependent Role="solda">
+        <PropertyRef Name="invoice_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__soldc__invoice_no__15502E78">
+    <End Role="salesc" Type="Self.salesc" Multiplicity="1" />
+    <End Role="soldc" Type="Self.soldc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="salesc">
+        <PropertyRef Name="invoice_no" />
+      </Principal>
+      <Dependent Role="soldc">
+        <PropertyRef Name="invoice_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="shopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="agentbalances" EntityType="Self.agentbalance" />
+    <EntitySet Name="agents" EntityType="Self.agent" />
+    <EntitySet Name="balances" EntityType="Self.balance" />
+    <EntitySet Name="cashbooks" EntityType="Self.cashbook" />
+    <EntitySet Name="categories" EntityType="Self.category" />
+    <EntitySet Name="companies" EntityType="Self.company" />
+    <EntitySet Name="configs" EntityType="Self.config" />
+    <EntitySet Name="customers" EntityType="Self.customer" />
+    <EntitySet Name="ledgers" EntityType="Self.ledger" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="registrations" EntityType="Self.registration" />
+    <EntitySet Name="returns" EntityType="Self.return" />
+    <EntitySet Name="sales" EntityType="Self.sale" />
+    <EntitySet Name="salesas" EntityType="Self.salesa" />
+    <EntitySet Name="salescs" EntityType="Self.salesc" />
+    <EntitySet Name="solds" EntityType="Self.sold" />
+    <EntitySet Name="soldas" EntityType="Self.solda" />
+    <EntitySet Name="soldcs" EntityType="Self.soldc" />
+    <EntitySet Name="stocks" EntityType="Self.stock" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="FK_agentbalances_agents" Association="Self.FK_agentbalances_agents">
+      <End Role="agents" EntitySet="agents" />
+      <End Role="agentbalances" EntitySet="agentbalances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_agentbalances_salesa" Association="Self.FK_agentbalances_salesa">
+      <End Role="salesa" EntitySet="salesas" />
+      <End Role="agentbalances" EntitySet="agentbalances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_salesa_agents" Association="Self.FK_salesa_agents">
+      <End Role="agents" EntitySet="agents" />
+      <End Role="salesa" EntitySet="salesas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_balances_customers" Association="Self.FK_balances_customers">
+      <End Role="customers" EntitySet="customers" />
+      <End Role="balances" EntitySet="balances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_balances_salesc" Association="Self.FK_balances_salesc">
+      <End Role="salesc" EntitySet="salescs" />
+      <End Role="balances" EntitySet="balances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cashbook_customers" Association="Self.FK_cashbook_customers">
+      <End Role="customers" EntitySet="customers" />
+      <End Role="cashbook" EntitySet="cashbooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ledger_cashbook" Association="Self.FK_ledger_cashbook">
+      <End Role="cashbook" EntitySet="cashbooks" />
+      <End Role="ledger" EntitySet="ledgers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product__categor__014935CB" Association="Self.FK__product__categor__014935CB">
+      <End Role="category" EntitySet="categories" />
+      <End Role="product" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product__company__023D5A04" Association="Self.FK__product__company__023D5A04">
+      <End Role="company" EntitySet="companies" />
+      <End Role="product" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__config__product___0519C6AF" Association="Self.FK__config__product___0519C6AF">
+      <End Role="product" EntitySet="products" />
+      <End Role="config" EntitySet="configs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sold__config_id__164452B1" Association="Self.FK__sold__config_id__164452B1">
+      <End Role="config" EntitySet="configs" />
+      <End Role="sold" EntitySet="solds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__solda__config_id__164452B1" Association="Self.FK__solda__config_id__164452B1">
+      <End Role="config" EntitySet="configs" />
+      <End Role="solda" EntitySet="soldas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__soldc__config_id__164452B1" Association="Self.FK__soldc__config_id__164452B1">
+      <End Role="config" EntitySet="configs" />
+      <End Role="soldc" EntitySet="soldcs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__stock__config_id__07F6335A" Association="Self.FK__stock__config_id__07F6335A">
+      <End Role="config" EntitySet="configs" />
+      <End Role="stock" EntitySet="stocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_salesc_customers" Association="Self.FK_salesc_customers">
+      <End Role="customers" EntitySet="customers" />
+      <End Role="salesc" EntitySet="salescs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_returns_returns" Association="Self.FK_returns_returns">
+      <End Role="returns" EntitySet="returns" />
+      <End Role="returns1" EntitySet="returns" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sold__invoice_no__15502E78" Association="Self.FK__sold__invoice_no__15502E78">
+      <End Role="sales" EntitySet="sales" />
+      <End Role="sold" EntitySet="solds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__solda__invoice_no__15502E78" Association="Self.FK__solda__invoice_no__15502E78">
+      <End Role="salesa" EntitySet="salesas" />
+      <End Role="solda" EntitySet="soldas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__soldc__invoice_no__15502E78" Association="Self.FK__soldc__invoice_no__15502E78">
+      <End Role="salesc" EntitySet="salescs" />
+      <End Role="soldc" EntitySet="soldcs" />
+    </AssociationSet>
+    <EntitySet Name="Custs" EntityType="shopModel.Cust" />
+  </EntityContainer>
+  <EntityType Name="Cust">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Rating" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

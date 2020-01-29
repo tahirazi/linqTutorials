@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DF12481F-B6D0-4435-8EAD-BB19EE1D5246}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LinqFormsApp</RootNamespace>
+    <AssemblyName>LinqFormsApp</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\CompanyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\CompanyForm.Designer.cs">
+      <DependentUpon>CompanyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MDIParent1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\MDIParent1.Designer.cs">
+      <DependentUpon>MDIParent1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\agent.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\agentbalance.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\balance.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cashbook.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\category.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\company.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\config.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cust.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\customer.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ledger.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\registration.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\return.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sale.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\salesa.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\salesc.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShopModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShopModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShopModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sold.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\solda.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\soldc.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\stock.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tuts\01-ExtensionMethods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tuts\01-ExtensionMethods.Designer.cs">
+      <DependentUpon>01-ExtensionMethods.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tuts\02-AggregateFunctions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tuts\02-AggregateFunctions.Designer.cs">
+      <DependentUpon>02-AggregateFunctions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tuts\03-RestrictionOperators.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tuts\03-RestrictionOperators.Designer.cs">
+      <DependentUpon>03-RestrictionOperators.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tuts\04-ProjectionOperators.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tuts\04-ProjectionOperators.Designer.cs">
+      <DependentUpon>04-ProjectionOperators.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tuts\05-OrderingOperators.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tuts\05-OrderingOperators.Designer.cs">
+      <DependentUpon>05-OrderingOperators.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tuts\06-PartitioningOperators.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tuts\06-PartitioningOperators.Designer.cs">
+      <DependentUpon>06-PartitioningOperators.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tuts\07- ConversionOperators.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tuts\07- ConversionOperators.Designer.cs">
+      <DependentUpon>07- ConversionOperators.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tuts\08-CastAndTypeOfOperators.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tuts\08-CastAndTypeOfOperators.Designer.cs">
+      <DependentUpon>08-CastAndTypeOfOperators.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tuts\Classes\StringHelper.cs" />
+    <Compile Include="Tuts\MDIParentTuts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tuts\MDIParentTuts.Designer.cs">
+      <DependentUpon>MDIParentTuts.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Admin\CompanyForm.resx">
+      <DependentUpon>CompanyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\MDIParent1.resx">
+      <DependentUpon>MDIParent1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Tuts\01-ExtensionMethods.resx">
+      <DependentUpon>01-ExtensionMethods.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tuts\02-AggregateFunctions.resx">
+      <DependentUpon>02-AggregateFunctions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tuts\03-RestrictionOperators.resx">
+      <DependentUpon>03-RestrictionOperators.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tuts\04-ProjectionOperators.resx">
+      <DependentUpon>04-ProjectionOperators.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tuts\05-OrderingOperators.resx">
+      <DependentUpon>05-OrderingOperators.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tuts\06-PartitioningOperators.resx">
+      <DependentUpon>06-PartitioningOperators.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tuts\07- ConversionOperators.resx">
+      <DependentUpon>07- ConversionOperators.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tuts\08-CastAndTypeOfOperators.resx">
+      <DependentUpon>08-CastAndTypeOfOperators.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tuts\MDIParentTuts.resx">
+      <DependentUpon>MDIParentTuts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Models\ShopModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ShopModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\ShopModel.edmx.diagram">
+      <DependentUpon>ShopModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\ShopModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShopModel.edmx</DependentUpon>
+      <LastGenOutput>ShopModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ShopModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShopModel.edmx</DependentUpon>
+      <LastGenOutput>ShopModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
